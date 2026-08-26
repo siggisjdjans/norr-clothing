@@ -4,6 +4,7 @@ import "./globals.css";
 import { CartProvider } from "@/lib/cart-context";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CursorFollower from "@/components/CursorFollower";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,12 +17,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Norr Clothing — Thoughtful Everyday Essentials",
+  title: "NORR — everyday fits, built different",
   description:
-    "Norr Clothing crafts built-to-last essentials for everyday life. Shop oversized hoodies, tees, and more — designed in the North, made responsibly.",
+    "NORR. Oversized hoodies, heavyweight tees and fits that actually last. Designed in the north, worn everywhere.",
   openGraph: {
-    title: "Norr Clothing",
-    description: "Thoughtful everyday essentials, designed in the North.",
+    title: "NORR",
+    description: "everyday fits, built different.",
     type: "website",
   },
   icons: {
@@ -40,6 +41,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="noise flex min-h-full flex-col">
+        <CursorFollower />
         <CartProvider>
           <Navbar />
           <main className="flex-1">{children}</main>

@@ -20,8 +20,8 @@ export default function ProductPurchase({ product }: { product: Product }) {
     <div className="space-y-6">
       <div>
         <div className="mb-2 flex items-center justify-between">
-          <span className="text-sm font-semibold">Color</span>
-          <span className="text-sm text-neutral-500">{color}</span>
+          <span className="text-sm font-black uppercase tracking-wide">Color</span>
+          <span className="text-xs font-medium text-[#777]">{color}</span>
         </div>
         <div className="flex flex-wrap gap-2">
           {product.colors.map((c) => (
@@ -29,10 +29,10 @@ export default function ProductPurchase({ product }: { product: Product }) {
               key={c}
               onClick={() => setColor(c)}
               aria-label={`Color ${c}`}
-              className={`h-8 w-8 rounded-full border transition-all ${
+              className={`h-9 w-9 rounded-full border-2 transition-all ${
                 color === c
-                  ? "ring-2 ring-black ring-offset-2"
-                  : "border-black/10 hover:scale-110"
+                  ? "border-[#111] ring-2 ring-[#c8ff00] ring-offset-2"
+                  : "border-[#111]/20 hover:scale-110"
               }`}
               style={{ background: c }}
             />
@@ -42,18 +42,18 @@ export default function ProductPurchase({ product }: { product: Product }) {
 
       <div>
         <div className="mb-2 flex items-center justify-between">
-          <span className="text-sm font-semibold">Size</span>
-          <span className="text-sm text-neutral-500">Size guide</span>
+          <span className="text-sm font-black uppercase tracking-wide">Size</span>
+          <span className="text-xs font-medium text-[#777]">size guide</span>
         </div>
         <div className="flex flex-wrap gap-2">
           {product.sizes.map((s) => (
             <button
               key={s}
               onClick={() => setSize(s)}
-              className={`min-w-11 rounded-lg border px-3 py-2 text-sm font-medium transition-colors ${
+              className={`brutal min-w-12 px-3 py-2 text-sm font-black ${
                 size === s
-                  ? "border-black bg-black text-white"
-                  : "border-black/10 text-neutral-700 hover:border-black/30"
+                  ? "bg-[#111] text-[#f4f1ea]"
+                  : "bg-[#f4f1ea] text-[#111]"
               }`}
             >
               {s}
@@ -64,13 +64,13 @@ export default function ProductPurchase({ product }: { product: Product }) {
 
       <button
         onClick={handleAdd}
-        className={`w-full rounded-full py-3.5 text-sm font-semibold text-white transition-all ${
+        className={`brutal w-full py-4 text-sm font-black uppercase tracking-widest ${
           added
-            ? "bg-accent-mint text-black"
-            : "bg-black hover:bg-neutral-800"
+            ? "bg-[#c8ff00] text-[#111]"
+            : "bg-[#111] text-[#f4f1ea]"
         }`}
       >
-        {added ? "Added to cart ✓" : "Add to cart"}
+        {added ? "added ✓" : "add to cart"}
       </button>
     </div>
   );

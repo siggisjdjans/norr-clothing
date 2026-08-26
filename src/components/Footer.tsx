@@ -2,73 +2,79 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-black/5 bg-white/60">
-      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <div className="grid gap-10 md:grid-cols-4">
-          <div className="md:col-span-2">
-            <Link href="/" className="flex items-center gap-2 text-lg font-bold">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-brand-600 via-accent-pink to-accent-peach text-sm font-black text-white">
-                N
-              </span>
-              Norr<span className="text-brand-600">.</span>
+    <footer className="border-t-2 border-[#111] bg-[#111] text-[#f4f1ea]">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+        <div className="grid gap-12 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Link href="/" className="text-5xl font-black tracking-tighter">
+              NORR<span className="text-[#c8ff00]">.</span>
             </Link>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-neutral-500">
-              Thoughtful, built-to-last essentials for everyday life. Designed
-              in the North, made responsibly.
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-[#a8a29e]">
+              Oversized fits. Heavyweight fabrics. Built in the north, worn
+              everywhere. No seasons, just staples.
             </p>
           </div>
 
-          <div>
-            <h3 className="text-sm font-semibold">Shop</h3>
-            <ul className="mt-3 space-y-2 text-sm text-neutral-500">
+          <div className="md:col-span-3">
+            <h3 className="text-xs font-black uppercase tracking-widest text-[#c8ff00]">
+              Shop
+            </h3>
+            <ul className="mt-4 space-y-3 text-sm">
               <li>
-                <Link href="/shop" className="hover:text-black">
+                <Link href="/shop" className="link-draw hover:text-white">
                   All products
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=Outerwear" className="hover:text-black">
+                <Link href="/shop?category=Outerwear" className="link-draw hover:text-white">
                   Outerwear
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=Tops" className="hover:text-black">
+                <Link href="/shop?category=Tops" className="link-draw hover:text-white">
                   Tops
                 </Link>
               </li>
               <li>
-                <Link href="/shop?category=Bottoms" className="hover:text-black">
+                <Link href="/shop?category=Bottoms" className="link-draw hover:text-white">
                   Bottoms
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-sm font-semibold">Company</h3>
-            <ul className="mt-3 space-y-2 text-sm text-neutral-500">
+          <div className="md:col-span-4">
+            <h3 className="text-xs font-black uppercase tracking-widest text-[#c8ff00]">
+              Elsewhere
+            </h3>
+            <ul className="mt-4 space-y-3 text-sm">
               <li>
-                <Link href="/about" className="hover:text-black">
+                <Link href="/about" className="link-draw hover:text-white">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-black">
+                <Link href="/contact" className="link-draw hover:text-white">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/cart" className="hover:text-black">
-                  Cart
-                </Link>
+                <a href="https://instagram.com" className="link-draw hover:text-white">
+                  Instagram ↗
+                </a>
+              </li>
+              <li>
+                <a href="https://tiktok.com" className="link-draw hover:text-white">
+                  TikTok ↗
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-black/5 pt-6 text-sm text-neutral-400 sm:flex-row sm:items-center">
-          <p>© {new Date().getFullYear()} Norr Clothing. All rights reserved.</p>
-          <p>Secured by Stripe · Ships worldwide</p>
+        <div className="mt-14 flex flex-col items-start justify-between gap-4 border-t border-[#333] pt-6 text-xs text-[#a8a29e] sm:flex-row sm:items-center">
+          <p>© {new Date().getFullYear()} NORR. all rights reserved.</p>
+          <p>built different · secured by stripe</p>
         </div>
       </div>
     </footer>

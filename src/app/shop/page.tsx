@@ -14,21 +14,23 @@ export default async function ShopPage({
     : products;
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
       <div className="mb-8">
-        <h1 className="text-4xl font-bold tracking-tight">Shop</h1>
-        <p className="mt-2 text-neutral-600">
-          Thoughtful essentials, made to be worn for years.
-        </p>
+        <span className="text-xs font-black uppercase tracking-widest text-[#ff2d78]">
+          all fits
+        </span>
+        <h1 className="mt-2 text-5xl font-black tracking-tighter sm:text-7xl">
+          SHOP
+        </h1>
       </div>
 
-      <div className="mb-8 flex flex-wrap gap-2">
+      <div className="mb-10 flex flex-wrap gap-2">
         <Link
           href="/shop"
-          className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+          className={`brutal px-4 py-2 text-sm font-black uppercase tracking-wide ${
             !category
-              ? "bg-black text-white"
-              : "border border-black/10 text-neutral-600 hover:border-black/30"
+              ? "bg-[#111] text-[#f4f1ea]"
+              : "bg-[#f4f1ea] text-[#111]"
           }`}
         >
           All
@@ -37,10 +39,10 @@ export default async function ShopPage({
           <Link
             key={c}
             href={`/shop?category=${encodeURIComponent(c)}`}
-            className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+            className={`brutal px-4 py-2 text-sm font-black uppercase tracking-wide ${
               category === c
-                ? "bg-black text-white"
-                : "border border-black/10 text-neutral-600 hover:border-black/30"
+                ? "bg-[#111] text-[#f4f1ea]"
+                : "bg-[#f4f1ea] text-[#111]"
             }`}
           >
             {c}
@@ -49,11 +51,11 @@ export default async function ShopPage({
       </div>
 
       {filtered.length === 0 ? (
-        <p className="py-20 text-center text-neutral-500">
-          No products found in this category.
+        <p className="py-20 text-center font-bold text-[#777]">
+          nothing here yet. check back soon.
         </p>
       ) : (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

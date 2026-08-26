@@ -17,9 +17,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const product = getProductBySlug(slug);
-  if (!product) return { title: "Product not found" };
+  if (!product) return { title: "not found" };
   return {
-    title: `${product.name} — Norr Clothing`,
+    title: `${product.name} — NORR`,
     description: product.description,
   };
 }
@@ -36,40 +36,37 @@ export default async function ProductPage({
   const related = products
     .filter((p) => p.id !== product.id && p.category === product.category)
     .concat(products.filter((p) => p.id !== product.id))
-    .slice(0, 4);
+    .slice(0, 3);
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-      <nav className="mb-8 text-sm text-neutral-500">
-        <Link href="/" className="hover:text-black">
-          Home
+    <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+      <nav className="mb-8 text-xs font-bold uppercase tracking-widest text-[#777]">
+        <Link href="/" className="hover:text-[#111]">
+          home
         </Link>
         <span className="mx-2">/</span>
-        <Link href="/shop" className="hover:text-black">
-          Shop
+        <Link href="/shop" className="hover:text-[#111]">
+          shop
         </Link>
         <span className="mx-2">/</span>
-        <span className="text-black">{product.name}</span>
+        <span className="text-[#111]">{product.name}</span>
       </nav>
 
       <div className="grid gap-10 lg:grid-cols-2">
-        <ProductImage
-          product={product}
-          className="aspect-[4/5] w-full rounded-3xl shadow-sm"
-        />
+        <div className="brutal-static overflow-hidden bg-white">
+          <ProductImage product={product} className="aspect-[4/5] w-full" />
+        </div>
 
         <div className="flex flex-col">
-          <span className="text-sm font-medium uppercase tracking-wider text-brand-600">
+          <span className="text-xs font-black uppercase tracking-widest text-[#ff2d78]">
             {product.category}
           </span>
-          <h1 className="mt-2 text-4xl font-bold tracking-tight">
+          <h1 className="mt-2 text-5xl font-black uppercase leading-none tracking-tighter sm:text-6xl">
             {product.name}
           </h1>
-          <p className="mt-3 text-2xl font-semibold">
-            {formatPrice(product.price)}
-          </p>
+          <p className="mt-4 text-3xl font-black">{formatPrice(product.price)}</p>
 
-          <p className="mt-4 leading-relaxed text-neutral-600">
+          <p className="mt-5 leading-relaxed text-[#333]">
             {product.description}
           </p>
 
@@ -77,12 +74,14 @@ export default async function ProductPage({
             <ProductPurchase product={product} />
           </div>
 
-          <div className="mt-10 border-t border-black/5 pt-6">
-            <h2 className="font-semibold">Details</h2>
-            <ul className="mt-3 space-y-2 text-sm text-neutral-600">
+          <div className="mt-10 border-t-2 border-[#111] pt-6">
+            <h2 className="text-sm font-black uppercase tracking-widest">
+              Details
+            </h2>
+            <ul className="mt-3 space-y-2 text-sm text-[#333]">
               {product.details.map((d) => (
                 <li key={d} className="flex items-start gap-2">
-                  <span className="mt-0.5 text-brand-500">✓</span>
+                  <span className="mt-0.5 font-black text-[#ff2d78]">✦</span>
                   {d}
                 </li>
               ))}
@@ -93,10 +92,10 @@ export default async function ProductPage({
 
       {related.length > 0 && (
         <section className="mt-20">
-          <h2 className="mb-8 text-2xl font-bold tracking-tight">
-            You might also like
+          <h2 className="mb-8 text-3xl font-black tracking-tighter sm:text-4xl">
+            YOU MIGHT <span className="outline-text">ALSO LIKE</span>
           </h2>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((p) => (
               <ProductCard key={p.id} product={p} />
             ))}
