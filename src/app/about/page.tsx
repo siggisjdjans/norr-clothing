@@ -2,59 +2,17 @@ import Link from "next/link";
 
 export default function AboutPage() {
   return (
-    <div>
-      <section className="border-b border-[#dedede]">
-        <div className="mx-auto max-w-5xl px-4 py-24 sm:px-6">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#525252]">
-            the story
-          </span>
-          <h1 className="mt-4 text-5xl font-semibold leading-[0.9] tracking-tighter sm:text-8xl">
-            BUILT IN THE
-            <br />
-            <span className="outline-text">NORTH.</span>
-          </h1>
-          <p className="mt-8 max-w-xl text-lg font-medium leading-snug text-[#333] sm:text-xl">
-            Norr started with one hoodie and a refusal to make it cheap. We
-            make fewer, better things — heavyweight fabrics, real stitching,
-            fits that don&apos;t fall apart after three washes.
-          </p>
+    <div className="page-shell py-20 sm:py-28">
+      <p className="eyebrow">About NORR</p>
+      <h1 className="mt-6 max-w-3xl text-5xl font-medium leading-[1.05] tracking-tight sm:text-7xl">At the beginning.</h1>
+      <div className="mt-12 grid gap-10 border-t border-neutral-200 pt-10 md:grid-cols-2">
+        <p className="max-w-lg text-2xl leading-relaxed tracking-tight">NORR is a clothing project in progress. This website is an early preview.</p>
+        <div className="max-w-lg space-y-6 text-base leading-relaxed text-neutral-600">
+          <p>The collection shown here is not available to order. Product photography, specifications, and availability have not been confirmed.</p>
+          <p>There is no mailing list or contact form collecting your details on this site.</p>
+          <Link href="/shop" className="action-link">Explore the preview <span aria-hidden>↗</span></Link>
         </div>
-      </section>
-
-      <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
-        <div className="grid gap-10 md:grid-cols-2">
-          <div className="brutal-static bg-white p-8">
-            <h2 className="text-2xl font-semibold uppercase tracking-tight">
-              Why we exist
-            </h2>
-            <p className="mt-3 leading-relaxed text-[#333]">
-              Fast fashion is a race to the bottom. We&apos;re not racing. We
-              release small, considered drops and keep making the same staples
-              better instead of chasing trends every week.
-            </p>
-          </div>
-          <div className="brutal-static bg-[#f5f5f5] p-8">
-            <h2 className="text-2xl font-semibold uppercase tracking-tight text-[#111]">
-              What we stand on
-            </h2>
-            <ul className="mt-3 space-y-2 text-sm font-medium text-[#111]">
-              <li>✦ organic &amp; recycled fabrics</li>
-              <li>✦ fair, transparent manufacturing</li>
-              <li>✦ carbon-neutral shipping</li>
-              <li>✦ free repairs, for life</li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="mt-16 text-center">
-          <Link
-            href="/shop"
-            className="brutal inline-block bg-[#111] px-10 py-5 text-sm font-semibold uppercase tracking-widest text-[#ffffff]"
-          >
-            Shop the collection →
-          </Link>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }

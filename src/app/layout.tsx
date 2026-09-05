@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { CartProvider } from "@/lib/cart-context";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -16,12 +15,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NORR — everyday fits, built different",
+  title: "NORR — Collection preview",
   description:
-    "NORR. Oversized hoodies, heavyweight tees and fits that actually last. Designed in the north, worn everywhere.",
+    "An early look at NORR. Explore the collection preview. Orders are not open.",
   openGraph: {
     title: "NORR",
-    description: "everyday fits, built different.",
+    description: "An early look at NORR. Collection preview; orders are not open.",
     type: "website",
   },
   icons: {
@@ -41,11 +40,9 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <a className="skip-link" href="#main-content">Skip to content</a>
-        <CartProvider>
           <Navbar />
           <main id="main-content" className="flex-1">{children}</main>
           <Footer />
-        </CartProvider>
       </body>
     </html>
   );

@@ -1,42 +1,29 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect } from "react";
-import { useCart } from "@/lib/cart-context";
+import { getStripe } from "@/lib/stripe";
 
-export default function SuccessPage() {
-  const { clear } = useCart();
+export const dynamic = "force-dynamic";
 
-  useEffect(() => {
-    clear();
-  }, [clear]);
+export default async function SuccessPage({ searchParams }: { searchParams: Promise<{ session_id?: string }> }) {
+  const { session_id } = await searchParams;
+  let paymentReceived = false;
+
+  // Visiting this URL alone is never proof of payment. Verify prior Stripe
+  // sessions without exposing the customer's identity or payment details.
+  if (typeof session_id === "string" && /^cs_(test_|live_)?[A-Za-z0-9]+$/.test(session_id)) {
+    try {
+      const session = await getStripe().checkout.sessions.retrieve(session_id);
+      paymentReceived = session.metadata?.source === "norr-clothing" && session.status === "complete" && session.payment_status === "paid";
+    } catch {
+      // Invalid sessions and unavailable Stripe configuration remain unverified.
+    }
+  }
 
   return (
-    <div className="mx-auto flex max-w-2xl flex-col items-center px-4 py-24 text-center sm:px-6">
-      <span className="grid h-16 w-16 place-items-center rounded-full bg-accent-mint/20 text-3xl">
-        ✓
-      </span>
-      <h1 className="mt-6 text-4xl font-bold tracking-tight">
-        Thank you for your order!
-      </h1>
-      <p className="mt-3 max-w-md text-neutral-600">
-        Your order is confirmed. We&apos;ve sent a receipt to your email and
-        will ship your essentials shortly.
-      </p>
-      <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-        <Link
-          href="/shop"
-          className="rounded-full bg-black px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
-        >
-          Continue shopping
-        </Link>
-        <Link
-          href="/"
-          className="rounded-full border border-black/10 px-7 py-3.5 text-sm font-semibold transition-colors hover:border-black/30"
-        >
-          Back home
-        </Link>
-      </div>
+    <div className="page-shell py-20 sm:py-28">
+      <p className="eyebrow">Payment status</p>
+      <h1 className="section-title mt-6">{paymentReceived ? "Payment received." : "Payment not verified."}</h1>
+      <p className="mt-8 max-w-xl text-lg leading-relaxed text-neutral-600">{paymentReceived ? "Stripe confirms payment for this checkout session. This page does not confirm shipment or that an email has been sent." : "This page cannot confirm a payment. If you attempted a payment, check the original Stripe checkout before trying again."}</p>
+      <Link href="/" className="action-link mt-10">Back to NORR <span aria-hidden>↗</span></Link>
     </div>
   );
 }

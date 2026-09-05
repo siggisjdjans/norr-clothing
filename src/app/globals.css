@@ -162,3 +162,14 @@ input:focus-visible, textarea:focus-visible { outline-offset: 2px; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* Editorial structure: a restrained wordmark, generous space, a clear catalog. */
+.page-shell { width: min(100% - 3rem, 80rem); margin-inline: auto; }
+.eyebrow { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.16em; color: #666; }
+.home-hero { padding-top: 2rem; padding-bottom: 4rem; border-bottom: 1px solid #e5e5e5; }
+.hero-wordmark { font-size: clamp(5.5rem, 26vw, 22rem); line-height: 0.95; letter-spacing: -0.085em; font-weight: 600; margin: 2.5rem 0 3.5rem -0.055em; }
+.hero-caption { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; }
+.section-title { font-size: clamp(2.25rem, 5vw, 4rem); line-height: 1.1; letter-spacing: -0.045em; font-weight: 500; }
+.action-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 2rem; border-bottom: 1px solid #111; padding-block: 0.75rem; font-size: 0.875rem; font-weight: 500; color: #111; }
+.action-link:hover { color: #666; border-color: #aaa; }
+@media (max-width: 639px) { .page-shell { width: calc(100% - 2rem); } .hero-caption { flex-direction: column; align-items: flex-start; } .hero-wordmark { margin-block: 2.5rem; } }
