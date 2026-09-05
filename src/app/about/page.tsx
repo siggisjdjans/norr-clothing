@@ -10,7 +10,7 @@ export default function AboutPage() {
         <div className="max-w-lg space-y-6 text-base leading-relaxed text-neutral-600">
           <p>The collection shown here is not available to order. Product photography, specifications, and availability have not been confirmed.</p>
           <p>There is no mailing list or contact form collecting your details on this site.</p>
-          <Link href="/shop" className="action-link">Explore the preview <span aria-hidden>↗</span></Link>
+          <Link href="/clothing" className="action-link">Explore the clothing <span aria-hidden>↗</span></Link>
         </div>
       </div>
     </div>

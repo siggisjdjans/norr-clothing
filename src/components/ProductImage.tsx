@@ -1,11 +1,25 @@
+import Image from "next/image";
 import type { Product } from "@/lib/products";
 
-export default function ProductImage({ product, className = "" }: { product: Product; className?: string }) {
+export default function ProductImage({
+  product,
+  className = "",
+  eager = false,
+}: {
+  product: Product;
+  className?: string;
+  eager?: boolean;
+}) {
   return (
-    <div className={`flex flex-col justify-between bg-neutral-100 p-6 sm:p-8 ${className}`}>
-      <p className="eyebrow">{product.category} / Preview</p>
-      <p className="my-12 max-w-[12ch] text-3xl font-medium leading-tight tracking-tight text-neutral-700 sm:text-4xl">{product.name}</p>
-      <p className="text-xs text-neutral-600">Product photography not yet available</p>
+    <div className={`relative aspect-[4/5] overflow-hidden bg-neutral-100 ${className}`}>
+      <Image
+        src={product.image}
+        alt={product.imageAlt}
+        fill
+        loading={eager ? "eager" : "lazy"}
+        sizes="(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw"
+        className="object-cover transition duration-500 ease-out group-hover:scale-[1.015]"
+      />
     </div>
   );
 }

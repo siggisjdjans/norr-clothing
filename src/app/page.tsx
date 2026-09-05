@@ -14,18 +14,18 @@ export default function Home() {
         <div className="hero-caption">
           <p className="max-w-xl text-3xl font-medium leading-tight tracking-tight sm:text-5xl">A work in progress.<br /><span className="text-neutral-500">Out in the open.</span></p>
           <div className="max-w-sm">
-            <p className="text-base leading-relaxed text-neutral-600">An early look at NORR. The collection is a preview; orders are not open.</p>
-            <Link href="/shop" className="action-link mt-6">View the collection <span aria-hidden>↗</span></Link>
+            <p className="text-base leading-relaxed text-neutral-600">Seven modern wardrobe studies. Original NORR names, new imagery, and a focus on proportion and texture.</p>
+            <Link href="/clothing" className="action-link mt-6">View the clothing <span aria-hidden>↗</span></Link>
           </div>
         </div>
       </section>
       <section id="collection" className="page-shell scroll-mt-28 py-16 sm:py-24">
         <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
           <div><p className="eyebrow mb-3">Collection preview</p><h2 className="section-title">The current edit.</h2></div>
-          <Link href="/shop" className="action-link">View all {products.length} <span aria-hidden>↗</span></Link>
+          <Link href="/clothing" className="action-link">View all {products.length} <span aria-hidden>↗</span></Link>
         </div>
         <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-          {products.slice(0, 6).map((product) => <ProductCard key={product.id} product={product} />)}
+          {products.slice(0, 6).map((product, index) => <ProductCard key={product.id} product={product} eager={index < 3} />)}
         </div>
       </section>
     </div>
