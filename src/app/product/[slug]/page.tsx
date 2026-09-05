@@ -40,7 +40,7 @@ export default async function ProductPage({
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-      <nav className="mb-8 text-xs font-bold uppercase tracking-widest text-[#777]">
+      <nav className="mb-8 text-xs font-bold uppercase tracking-widest text-[#666]">
         <Link href="/" className="hover:text-[#111]">
           home
         </Link>
@@ -58,13 +58,13 @@ export default async function ProductPage({
         </div>
 
         <div className="flex flex-col">
-          <span className="text-xs font-black uppercase tracking-widest text-[#ff2d78]">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[#525252]">
             {product.category}
           </span>
-          <h1 className="mt-2 text-5xl font-black uppercase leading-none tracking-tighter sm:text-6xl">
+          <h1 className="mt-2 text-5xl font-semibold uppercase leading-none tracking-tighter sm:text-6xl">
             {product.name}
           </h1>
-          <p className="mt-4 text-3xl font-black">{formatPrice(product.price)}</p>
+          <p className="mt-4 text-3xl font-semibold">{formatPrice(product.price)}</p>
 
           <p className="mt-5 leading-relaxed text-[#333]">
             {product.description}
@@ -74,14 +74,14 @@ export default async function ProductPage({
             <ProductPurchase product={product} />
           </div>
 
-          <div className="mt-10 border-t-2 border-[#111] pt-6">
-            <h2 className="text-sm font-black uppercase tracking-widest">
+          <div className="mt-10 border-t border-[#dedede] pt-6">
+            <h2 className="text-sm font-semibold uppercase tracking-widest">
               Details
             </h2>
             <ul className="mt-3 space-y-2 text-sm text-[#333]">
               {product.details.map((d) => (
                 <li key={d} className="flex items-start gap-2">
-                  <span className="mt-0.5 font-black text-[#ff2d78]">✦</span>
+                  <span className="mt-0.5 font-semibold text-[#525252]">✦</span>
                   {d}
                 </li>
               ))}
@@ -92,7 +92,7 @@ export default async function ProductPage({
 
       {related.length > 0 && (
         <section className="mt-20">
-          <h2 className="mb-8 text-3xl font-black tracking-tighter sm:text-4xl">
+          <h2 className="mb-8 text-3xl font-semibold tracking-tighter sm:text-4xl">
             YOU MIGHT <span className="outline-text">ALSO LIKE</span>
           </h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

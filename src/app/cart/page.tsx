@@ -45,15 +45,15 @@ export default function CartPage() {
     return (
       <div className="mx-auto flex max-w-7xl flex-col items-center px-4 py-24 text-center sm:px-6">
         <span className="text-7xl">🛒</span>
-        <h1 className="mt-6 text-4xl font-black uppercase tracking-tighter sm:text-6xl">
+        <h1 className="mt-6 text-4xl font-semibold uppercase tracking-tighter sm:text-6xl">
           cart&apos;s empty
         </h1>
-        <p className="mt-2 font-medium text-[#777]">
+        <p className="mt-2 font-medium text-[#666]">
           nothing in here yet. fix that.
         </p>
         <Link
           href="/shop"
-          className="brutal mt-8 bg-[#111] px-8 py-4 text-sm font-black uppercase tracking-widest text-[#f4f1ea]"
+          className="brutal mt-8 bg-[#111] px-8 py-4 text-sm font-semibold uppercase tracking-widest text-[#ffffff]"
         >
           Start shopping
         </Link>
@@ -63,7 +63,7 @@ export default function CartPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
-      <h1 className="text-5xl font-black uppercase tracking-tighter sm:text-7xl">
+      <h1 className="text-5xl font-semibold uppercase tracking-tighter sm:text-7xl">
         YOUR CART
       </h1>
 
@@ -84,14 +84,14 @@ export default function CartPage() {
                     <div>
                       <Link
                         href={`/product/${product.slug}`}
-                        className="font-black uppercase tracking-tight hover:text-[#ff2d78]"
+                        className="font-semibold uppercase tracking-tight hover:text-[#525252]"
                       >
                         {product.name}
                       </Link>
-                      <p className="mt-0.5 text-xs font-medium text-[#777]">
+                      <p className="mt-0.5 text-xs font-medium text-[#666]">
                         {item.size} ·{" "}
                         <span
-                          className="inline-block h-3 w-3 rounded-full border border-[#111]/20 align-middle"
+                          className="inline-block h-3 w-3 rounded-full border border-[#dedede]/20 align-middle"
                           style={{ background: item.color }}
                         />{" "}
                         {item.color}
@@ -99,31 +99,31 @@ export default function CartPage() {
                     </div>
                     <button
                       onClick={() => removeItem(key)}
-                      className="text-sm font-black text-[#777] hover:text-[#ff2d78]"
+                      className="text-sm font-semibold text-[#666] hover:text-[#525252]"
                       aria-label="Remove"
                     >
                       ✕
                     </button>
                   </div>
                   <div className="mt-auto flex items-center justify-between pt-3">
-                    <div className="brutal flex items-center bg-[#f4f1ea]">
+                    <div className="brutal flex items-center bg-[#ffffff]">
                       <button
                         onClick={() => updateQuantity(key, item.quantity - 1)}
-                        className="grid h-9 w-9 place-items-center font-black hover:bg-[#111] hover:text-[#f4f1ea]"
+                        className="grid h-9 w-9 place-items-center font-semibold hover:bg-[#111] hover:text-[#ffffff]"
                       >
                         −
                       </button>
-                      <span className="w-6 text-center text-sm font-black">
+                      <span className="w-6 text-center text-sm font-semibold">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() => updateQuantity(key, item.quantity + 1)}
-                        className="grid h-9 w-9 place-items-center font-black hover:bg-[#111] hover:text-[#f4f1ea]"
+                        className="grid h-9 w-9 place-items-center font-semibold hover:bg-[#111] hover:text-[#ffffff]"
                       >
                         +
                       </button>
                     </div>
-                    <span className="font-black">
+                    <span className="font-semibold">
                       {formatPrice(product.price * item.quantity)}
                     </span>
                   </div>
@@ -134,35 +134,35 @@ export default function CartPage() {
 
           <button
             onClick={clear}
-            className="text-sm font-bold text-[#777] underline hover:text-[#ff2d78]"
+            className="text-sm font-bold text-[#666] underline hover:text-[#525252]"
           >
             clear cart
           </button>
         </div>
 
         <div className="brutal-static h-fit bg-white p-6">
-          <h2 className="text-lg font-black uppercase tracking-wide">
+          <h2 className="text-lg font-semibold uppercase tracking-wide">
             Order summary
           </h2>
           <dl className="mt-4 space-y-3 text-sm">
             <div className="flex justify-between">
-              <dt className="font-medium text-[#777]">Subtotal</dt>
-              <dd className="font-black">{formatPrice(subtotal)}</dd>
+              <dt className="font-medium text-[#666]">Subtotal</dt>
+              <dd className="font-semibold">{formatPrice(subtotal)}</dd>
             </div>
             <div className="flex justify-between">
-              <dt className="font-medium text-[#777]">Shipping</dt>
-              <dd className="font-black">
+              <dt className="font-medium text-[#666]">Shipping</dt>
+              <dd className="font-semibold">
                 {shipping === 0 ? "Free" : formatPrice(shipping)}
               </dd>
             </div>
-            <div className="flex justify-between border-t-2 border-[#111] pt-3 text-base">
-              <dt className="font-black uppercase">Total</dt>
-              <dd className="font-black">{formatPrice(total)}</dd>
+            <div className="flex justify-between border-t border-[#dedede] pt-3 text-base">
+              <dt className="font-semibold uppercase">Total</dt>
+              <dd className="font-semibold">{formatPrice(total)}</dd>
             </div>
           </dl>
 
           {error && (
-            <p className="mt-4 bg-[#ff2d78]/10 px-3 py-2 text-sm font-medium text-[#ff2d78]">
+            <p className="mt-4 bg-[#111]/10 px-3 py-2 text-sm font-medium text-[#525252]">
               {error}
             </p>
           )}
@@ -170,11 +170,11 @@ export default function CartPage() {
           <button
             onClick={handleCheckout}
             disabled={checkingOut}
-            className="brutal mt-6 w-full bg-[#111] py-4 text-sm font-black uppercase tracking-widest text-[#f4f1ea] disabled:opacity-60"
+            className="brutal mt-6 w-full bg-[#111] py-4 text-sm font-semibold uppercase tracking-widest text-[#ffffff] disabled:opacity-60"
           >
             {checkingOut ? "Redirecting…" : "Checkout →"}
           </button>
-          <p className="mt-3 text-center text-xs font-medium text-[#777]">
+          <p className="mt-3 text-center text-xs font-medium text-[#666]">
             🔒 secure payment · stripe
           </p>
         </div>
