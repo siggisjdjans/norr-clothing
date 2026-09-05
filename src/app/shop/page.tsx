@@ -15,6 +15,9 @@ export default async function ShopPage({
 
   return (
     <div className="page-shell py-16 sm:py-20">
+      <Link href="/" className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm text-neutral-600 transition-colors hover:text-black">
+        <span aria-hidden="true">←</span> Back to home
+      </Link>
       <div className="mb-8">
         <span className="text-xs font-semibold uppercase tracking-widest text-[#525252]">
           Collection preview
